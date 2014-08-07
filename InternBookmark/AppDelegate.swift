@@ -9,13 +9,16 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, InternBookmarkAPIClientProtocol {
                             
     var window: UIWindow?
 
 
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
-        // Override point for customization after application launch.
+
+        AFNetworkActivityIndicatorManager.sharedManager().enabled = true
+        InternBookmarkAPIClient.sharedClient().delegate = self
+
         return true
     }
 
@@ -41,6 +44,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    // MARK: - IBKMInternBookmarkAPIClientDelegate
+
+    func APIClientNeedsLogin(client : InternBookmarkAPIClient) {
+        let rootViewController: UIViewController = UIApplication.sharedApplication().keyWindow.rootViewController
+        let loginViewController: UIViewController = rootViewController.storyboard.instantiateViewControllerWithIdentifier("LoginScene") as UIViewController
+        rootViewController.presentViewController(loginViewController, animated: true, completion: nil)
+    }
 
 }
 

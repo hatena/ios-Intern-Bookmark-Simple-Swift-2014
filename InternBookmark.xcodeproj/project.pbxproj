@@ -7,10 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E054525198DEA5C009E3EBE /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E054524198DEA5C009E3EBE /* BookmarksViewController.swift */; };
+		0E054527198DF850009E3EBE /* BookmarkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E054526198DF850009E3EBE /* BookmarkManager.swift */; };
+		0E054529198DFE0C009E3EBE /* InternBookmarkAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E054528198DFE0C009E3EBE /* InternBookmarkAPIClient.swift */; };
+		0E054530198E5D50009E3EBE /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E05452F198E5D50009E3EBE /* Bookmark.swift */; };
+		0E054532198E5EFF009E3EBE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E054531198E5EFF009E3EBE /* User.swift */; };
+		0E054535198E6799009E3EBE /* NSDateFormatter+MySQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E054534198E6799009E3EBE /* NSDateFormatter+MySQL.swift */; };
+		0E054537198E6A95009E3EBE /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E054536198E6A95009E3EBE /* Entry.swift */; };
+		0EB4AEBC199119E300E63CFF /* UIAlertController+NSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB4AEBB199119E300E63CFF /* UIAlertController+NSError.swift */; };
 		0ED64DFF198DE3C4001D7680 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED64DFE198DE3C4001D7680 /* AppDelegate.swift */; };
 		0ED64E04198DE3C4001D7680 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ED64E02198DE3C4001D7680 /* Main.storyboard */; };
 		0ED64E06198DE3C4001D7680 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0ED64E05198DE3C4001D7680 /* Images.xcassets */; };
 		0ED64E12198DE3C4001D7680 /* InternBookmarkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED64E11198DE3C4001D7680 /* InternBookmarkTests.swift */; };
+		0EDA7E5C198FB7F40003E8C5 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDA7E5B198FB7F40003E8C5 /* BookmarkViewController.swift */; };
+		0EDA7E5E198FBA570003E8C5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDA7E5D198FBA570003E8C5 /* LoginViewController.swift */; };
+		D2FDB33E04524E99A85960FA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4EFC83500B46298394F0E8 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,14 +35,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E054524198DEA5C009E3EBE /* BookmarksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
+		0E054526198DF850009E3EBE /* BookmarkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkManager.swift; sourceTree = "<group>"; };
+		0E054528198DFE0C009E3EBE /* InternBookmarkAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternBookmarkAPIClient.swift; sourceTree = "<group>"; };
+		0E05452A198E0125009E3EBE /* InternBookmark-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "InternBookmark-Bridging-Header.h"; sourceTree = "<group>"; };
+		0E05452F198E5D50009E3EBE /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
+		0E054531198E5EFF009E3EBE /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0E054534198E6799009E3EBE /* NSDateFormatter+MySQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDateFormatter+MySQL.swift"; sourceTree = "<group>"; };
+		0E054536198E6A95009E3EBE /* Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		0EB4AEBB199119E300E63CFF /* UIAlertController+NSError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+NSError.swift"; sourceTree = "<group>"; };
 		0ED64DF9198DE3C4001D7680 /* InternBookmark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InternBookmark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ED64DFD198DE3C4001D7680 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0ED64DFE198DE3C4001D7680 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0ED64DFE198DE3C4001D7680 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../AppDelegate.swift; sourceTree = "<group>"; };
 		0ED64E03198DE3C4001D7680 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0ED64E05198DE3C4001D7680 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0ED64E0B198DE3C4001D7680 /* InternBookmarkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InternBookmarkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ED64E10198DE3C4001D7680 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0ED64E11198DE3C4001D7680 /* InternBookmarkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternBookmarkTests.swift; sourceTree = "<group>"; };
+		0EDA7E5B198FB7F40003E8C5 /* BookmarkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
+		0EDA7E5D198FBA570003E8C5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		3E4EFC83500B46298394F0E8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF75C3A00E514AF99D611AE9 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2FDB33E04524E99A85960FA /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,12 +77,66 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E054521198DE997009E3EBE /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				0E054533198E6746009E3EBE /* Utilities */,
+				0E054523198DEA1A009E3EBE /* Models */,
+				0E054522198DE9D9009E3EBE /* Controllers */,
+				0ED64DFE198DE3C4001D7680 /* AppDelegate.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		0E054522198DE9D9009E3EBE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0E054524198DEA5C009E3EBE /* BookmarksViewController.swift */,
+				0EDA7E5B198FB7F40003E8C5 /* BookmarkViewController.swift */,
+				0EDA7E5D198FBA570003E8C5 /* LoginViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		0E054523198DEA1A009E3EBE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0E05452E198E5D11009E3EBE /* Data Models */,
+				0E054526198DF850009E3EBE /* BookmarkManager.swift */,
+				0E054528198DFE0C009E3EBE /* InternBookmarkAPIClient.swift */,
+				0E05452A198E0125009E3EBE /* InternBookmark-Bridging-Header.h */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0E05452E198E5D11009E3EBE /* Data Models */ = {
+			isa = PBXGroup;
+			children = (
+				0E05452F198E5D50009E3EBE /* Bookmark.swift */,
+				0E054531198E5EFF009E3EBE /* User.swift */,
+				0E054536198E6A95009E3EBE /* Entry.swift */,
+			);
+			name = "Data Models";
+			path = DataModels;
+			sourceTree = "<group>";
+		};
+		0E054533198E6746009E3EBE /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				0E054534198E6799009E3EBE /* NSDateFormatter+MySQL.swift */,
+				0EB4AEBB199119E300E63CFF /* UIAlertController+NSError.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		0ED64DF0198DE3C4001D7680 = {
 			isa = PBXGroup;
 			children = (
 				0ED64DFB198DE3C4001D7680 /* InternBookmark */,
 				0ED64E0E198DE3C4001D7680 /* InternBookmarkTests */,
 				0ED64DFA198DE3C4001D7680 /* Products */,
+				CF75C3A00E514AF99D611AE9 /* Pods.xcconfig */,
+				88D92883F84C432299D60329 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,7 +152,7 @@
 		0ED64DFB198DE3C4001D7680 /* InternBookmark */ = {
 			isa = PBXGroup;
 			children = (
-				0ED64DFE198DE3C4001D7680 /* AppDelegate.swift */,
+				0E054521198DE997009E3EBE /* Classes */,
 				0ED64E02198DE3C4001D7680 /* Main.storyboard */,
 				0ED64E05198DE3C4001D7680 /* Images.xcassets */,
 				0ED64DFC198DE3C4001D7680 /* Supporting Files */,
@@ -106,6 +185,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		88D92883F84C432299D60329 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3E4EFC83500B46298394F0E8 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -113,9 +200,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0ED64E15198DE3C4001D7680 /* Build configuration list for PBXNativeTarget "InternBookmark" */;
 			buildPhases = (
+				FDD39B377BB44A559DE84378 /* Check Pods Manifest.lock */,
 				0ED64DF5198DE3C4001D7680 /* Sources */,
 				0ED64DF6198DE3C4001D7680 /* Frameworks */,
 				0ED64DF7198DE3C4001D7680 /* Resources */,
+				8E5F99DA6D5645E797E8867D /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -200,12 +289,55 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8E5F99DA6D5645E797E8867D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FDD39B377BB44A559DE84378 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0ED64DF5198DE3C4001D7680 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EB4AEBC199119E300E63CFF /* UIAlertController+NSError.swift in Sources */,
+				0E054537198E6A95009E3EBE /* Entry.swift in Sources */,
+				0E054530198E5D50009E3EBE /* Bookmark.swift in Sources */,
+				0E054527198DF850009E3EBE /* BookmarkManager.swift in Sources */,
+				0E054535198E6799009E3EBE /* NSDateFormatter+MySQL.swift in Sources */,
+				0E054532198E5EFF009E3EBE /* User.swift in Sources */,
+				0E054525198DEA5C009E3EBE /* BookmarksViewController.swift in Sources */,
 				0ED64DFF198DE3C4001D7680 /* AppDelegate.swift in Sources */,
+				0EDA7E5C198FB7F40003E8C5 /* BookmarkViewController.swift in Sources */,
+				0EDA7E5E198FBA570003E8C5 /* LoginViewController.swift in Sources */,
+				0E054529198DFE0C009E3EBE /* InternBookmarkAPIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,23 +450,30 @@
 		};
 		0ED64E16198DE3C4001D7680 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF75C3A00E514AF99D611AE9 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = InternBookmark/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "InternBookmark/Classes/Models/InternBookmark-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		0ED64E17198DE3C4001D7680 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF75C3A00E514AF99D611AE9 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = InternBookmark/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "InternBookmark/Classes/Models/InternBookmark-Bridging-Header.h";
 			};
 			name = Release;
 		};
