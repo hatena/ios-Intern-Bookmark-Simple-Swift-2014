@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.11" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AM0-W4-YVR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6205" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AM0-W4-YVR">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6190.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6198"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -22,13 +22,13 @@
         <!--Master-->
         <scene sceneID="2ED-f1-uIz">
             <objects>
-                <tableViewController title="Master" id="DYC-QT-bee" customClass="IBKMBookmarksViewController" sceneMemberID="viewController">
+                <tableViewController title="Master" id="DYC-QT-bee" customClass="BookmarksViewController" customModule="InternBookmark" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="xjU-eq-x8j">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="IBKMBookmarkCell" textLabel="LAL-NX-E7h" detailTextLabel="Jr1-v3-4fY" style="IBUITableViewCellStyleSubtitle" id="8IR-GO-wLq">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BookmarkCell" textLabel="LAL-NX-E7h" detailTextLabel="Jr1-v3-4fY" style="IBUITableViewCellStyleSubtitle" id="8IR-GO-wLq">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8IR-GO-wLq" id="nHh-74-DQb">
@@ -52,7 +52,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <segue destination="Yhd-6F-lPu" kind="push" identifier="IBKMOpenBookmarkSegue" id="IpN-HA-IIT"/>
+                                    <segue destination="Yhd-6F-lPu" kind="show" identifier="OpenBookmarkSegue" id="gIh-ba-fdi"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -71,7 +71,7 @@
         <!--Detail-->
         <scene sceneID="Sp6-ZI-2lE">
             <objects>
-                <viewController title="Detail" id="Yhd-6F-lPu" customClass="IBKMBookmarkViewController" sceneMemberID="viewController">
+                <viewController title="Detail" id="Yhd-6F-lPu" customClass="BookmarkViewController" customModule="InternBookmark" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="e8r-DS-KEY"/>
                         <viewControllerLayoutGuide type="bottom" id="ZcI-Ud-U8J"/>
@@ -92,8 +92,8 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="Comment" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsJ-Vh-f1M">
-                                <rect key="frame" x="20" y="136" width="560" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Comment" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsJ-Vh-f1M">
+                                <rect key="frame" x="20" y="135" width="560" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -114,9 +114,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="efy-yH-Kkw"/>
                     <connections>
-                        <outlet property="URLLabel" destination="Pj8-p8-reX" id="8WX-w7-dYS"/>
-                        <outlet property="commentLabel" destination="lsJ-Vh-f1M" id="J6B-PV-ShK"/>
-                        <outlet property="titleLabel" destination="hqm-i5-Daa" id="UpM-Gx-hif"/>
+                        <outlet property="URLLabel" destination="Pj8-p8-reX" id="a8P-5V-evV"/>
+                        <outlet property="commentLabel" destination="lsJ-Vh-f1M" id="12g-RV-DP7"/>
+                        <outlet property="titleLabel" destination="hqm-i5-Daa" id="WeA-5W-VOA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tf2-Vh-OgA" sceneMemberID="firstResponder"/>
@@ -126,7 +126,7 @@
         <!--Navigation Controller-->
         <scene sceneID="iDz-8W-Vux">
             <objects>
-                <navigationController storyboardIdentifier="IBKMLoginScene" definesPresentationContext="YES" id="h1B-a1-TTO" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LoginScene" definesPresentationContext="YES" id="h1B-a1-TTO" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vCV-X9-YTR">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -141,7 +141,7 @@
         <!--Login-->
         <scene sceneID="5TA-OQ-60Y">
             <objects>
-                <viewController id="EDX-vP-CyN" customClass="IBKMLoginViewController" sceneMemberID="viewController">
+                <viewController id="EDX-vP-CyN" customClass="LoginViewController" customModule="InternBookmark" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gW9-lP-g9f"/>
                         <viewControllerLayoutGuide type="bottom" id="3JN-mZ-K8G"/>
@@ -174,7 +174,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="webView" destination="heR-VI-uIu" id="kcU-m0-MSh"/>
+                        <outlet property="webView" destination="heR-VI-uIu" id="p4g-oY-8Q8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zIi-qF-Wgn" userLabel="First Responder" sceneMemberID="firstResponder"/>
