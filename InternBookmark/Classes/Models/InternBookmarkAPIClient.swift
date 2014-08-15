@@ -8,58 +8,53 @@
 
 import UIKit
 
-protocol InternBookmarkAPIClientProtocol {
+protocol APIClientProtocol {
     func APIClientNeedsLogin(client : InternBookmarkAPIClient)
 }
 
 struct APIClientConstants {
-    static let internBookmarAPIBaseURLString: String = "http://localhost:3000/"
+    static let APIBaseURLString: String = "http://localhost:3000"
 }
 
-class InternBookmarkAPIClient: AFHTTPSessionManager {
+class InternBookmarkAPIClient: NSObject {
 
-    var delegate: InternBookmarkAPIClientProtocol?
+    var delegate: APIClientProtocol?
 
     class func sharedClient() -> InternBookmarkAPIClient {
         struct Static {
-            static let instance: InternBookmarkAPIClient = {
-                let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-                configuration.HTTPAdditionalHeaders = [
-                    "Accept" : "application/json",
-                ]
-                let internBookmarkAPIClient = InternBookmarkAPIClient(baseURL:
-                    NSURL.URLWithString(APIClientConstants.internBookmarAPIBaseURLString), sessionConfiguration: configuration)
-
-                return internBookmarkAPIClient
-            }()
+            static let instance: InternBookmarkAPIClient = InternBookmarkAPIClient()
         }
         return Static.instance
     }
 
     class func loginURL() -> NSURL {
-        return NSURL.URLWithString(APIClientConstants.internBookmarAPIBaseURLString).URLByAppendingPathComponent("login")
+        return NSURL.URLWithString(APIClientConstants.APIBaseURLString).URLByAppendingPathComponent("login")
+    }
+
+    func createURL(URL : String) -> String {
+        return APIClientConstants.APIBaseURLString + URL
     }
 
     func getBookmarksWithCompletion(block: ((AnyObject!,  NSError!) -> Void)!) {
 
-        self.GET("/api/bookmarks",
-            parameters: [],
-            success: { (task: NSURLSessionDataTask!, responseObject: AnyObject!) in
-                if (block) {
-                    block(responseObject, nil)
-                }
-            }, failure: { (task: NSURLSessionDataTask!, error: NSError!) in
-                if ((task.response as? NSHTTPURLResponse)?.statusCode == 401 && self.needsLogin()) {
+        Alamofire.request(.GET, self.createURL("/api/bookmarks"))
+            .responseJSON {(request, response, JSON, error) in
+                if (error != nil) {
+                    if (response?.statusCode == 401 && self.needsLogin()) {
+                        if (block) {
+                            block(nil, nil)
+                        }
+                    } else {
+                        if (block) {
+                            block(nil, error)
+                        }
+                    }
+                } else {
                     if (block) {
-                        block(nil, nil)
+                        block(JSON, nil)
                     }
                 }
-                else {
-                    if (block) {
-                        block(nil, error)
-                    }
-                }
-            })
+        }
     }
 
     func needsLogin() -> Bool {
