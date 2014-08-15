@@ -9,7 +9,7 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, InternBookmarkAPIClientProtocol {
+class AppDelegate: UIResponder, UIApplicationDelegate, APIClientProtocol {
                             
     var window: UIWindow?
 
