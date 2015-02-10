@@ -40,7 +40,7 @@ class BookmarksViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("BookmarkCell", forIndexPath: indexPath) as UITableViewCell
 
-        let bookmark: Bookmark = BookmarkManager.sharedManager().bookmarks[indexPath.row]
+        let bookmark = BookmarkManager.sharedManager().bookmarks[indexPath.row]
 
         cell.textLabel?.text = bookmark.entry?.title
         cell.detailTextLabel?.text = bookmark.entry?.URL?.absoluteString
@@ -53,9 +53,9 @@ class BookmarksViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "OpenBookmarkSegue" {
             if let selected = tableView?.indexPathForSelectedRow() {
-                let bookmark: Bookmark = BookmarkManager.sharedManager().bookmarks[selected.row]
+                let bookmark = BookmarkManager.sharedManager().bookmarks[selected.row]
 
-                let bookmarkViewController: BookmarkViewController = segue.destinationViewController as BookmarkViewController
+                let bookmarkViewController = segue.destinationViewController as BookmarkViewController
                 bookmarkViewController.bookmark = bookmark
             }
         }

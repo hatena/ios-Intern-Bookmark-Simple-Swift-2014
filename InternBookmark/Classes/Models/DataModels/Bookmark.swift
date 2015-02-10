@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Bookmark {
+struct Bookmark: Printable {
 
     let bookmarkID: NSNumber?
     let comment: String?
@@ -21,25 +21,24 @@ struct Bookmark {
         return "<bookmarkID=\(bookmarkID)"
             + ", comment=\(comment)"
             + ", entry=\(entry)"
-            //+ ", user=\(user)"
-            + ", created=\(created)"
-            + ", updated=\(updated)>"
+            + ", user=\(user)"
+            + ", created=\(created), updated=\(updated)>"
     }
 
     init(JSONDictionary json: [String: AnyObject]) {
         if let bookmarkID = json["bookmark_id"] as? NSNumber {
             self.bookmarkID = bookmarkID
         }
-        if let comment = json["comment"] as? NSString {
+        if let comment = json["comment"] as? String {
             self.comment = comment
         }
 
         let dateFormatter = NSDateFormatter.MySQLDateFormatter()
 
-        if let created = json["created"] as? NSString {
+        if let created = json["created"] as? String {
             self.created = dateFormatter.dateFromString(created)
         }
-        if let updated = json["updated"] as? NSString {
+        if let updated = json["updated"] as? String {
             self.updated = dateFormatter.dateFromString(updated)
         }
         if let entry = json["entry"] as? [String: AnyObject] {

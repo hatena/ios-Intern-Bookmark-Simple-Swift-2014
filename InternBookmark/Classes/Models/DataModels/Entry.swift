@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Entry {
+struct Entry: Printable {
 
     let entryID: NSNumber?
     let URL: NSURL?
@@ -20,15 +20,14 @@ struct Entry {
         return "<entryID=\(entryID)"
             + ", URL=\(URL)"
             + ", title=\(title)"
-            + ", created=\(created)"
-            + ", updated=\(updated)>"
+            + ", created=\(created), updated=\(updated)>"
     }
 
     init(JSONDictionary json: [String: AnyObject]) {
         if let entryID = json["entry_id"] as? NSNumber {
             self.entryID = entryID
         }
-        if let URL = json["url"] as? NSString {
+        if let URL = json["url"] as? String {
             self.URL = NSURL(string: URL)
         }
         if let title = json["title"] as? String {
@@ -37,10 +36,10 @@ struct Entry {
 
         let dateFormatter: NSDateFormatter = NSDateFormatter.MySQLDateFormatter();
 
-        if let created = json["created"] as? NSString {
+        if let created = json["created"] as? String {
             self.created = dateFormatter.dateFromString(created)
         }
-        if let updated = json["updated"] as? NSString {
+        if let updated = json["updated"] as? String {
             self.updated = dateFormatter.dateFromString(updated)
         }
     }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct User {
+struct User: Printable {
     let userID: NSNumber?
     let name: String?
     let created: NSDate?
@@ -23,12 +23,12 @@ struct User {
         if let userID = json["user_id"] as? NSNumber {
             self.userID = userID
         }
-        if let name = json["name"] as? NSString {
+        if let name = json["name"] as? String {
             self.name = name
         }
 
         let dateFormatter: NSDateFormatter = NSDateFormatter.MySQLDateFormatter()
-        if let created = json["created"] as? NSString {
+        if let created = json["created"] as? String {
             self.created = dateFormatter.dateFromString(created)
         }
     }

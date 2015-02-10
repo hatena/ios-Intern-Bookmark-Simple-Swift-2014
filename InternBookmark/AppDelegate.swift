@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, APIClientProtocol {
     var window: UIWindow?
 
 
-    func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
         AFNetworkActivityIndicatorManager.sharedManager().enabled = true
         InternBookmarkAPIClient.sharedClient().delegate = self

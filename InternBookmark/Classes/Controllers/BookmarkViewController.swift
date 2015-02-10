@@ -14,14 +14,14 @@ class BookmarkViewController: UIViewController {
     @IBOutlet weak var URLLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
 
-    var bookmark : Bookmark!
+    var bookmark : Bookmark?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = bookmark.entry?.title
-        titleLabel.text = bookmark.entry?.title
-        URLLabel.text = bookmark.entry?.URL?.absoluteString
-        commentLabel.text = bookmark.comment
+        title = bookmark?.entry?.title
+        titleLabel.text = bookmark?.entry?.title
+        URLLabel.text = bookmark?.entry?.URL?.absoluteString
+        commentLabel.text = bookmark?.comment
     }
 }

@@ -22,12 +22,10 @@ class BookmarkManager: NSObject {
 
     func reloadBookmarksWithCompletion(completionHandler: ((NSError?) -> Void)?) {
         InternBookmarkAPIClient.sharedClient().getBookmarksWithCompletion() { [weak self] (results: AnyObject?, error: NSError?) in
-            if results != nil {
-                if let jsonResults = results as? [String: AnyObject] {
-                    if let bookmarksJSON = jsonResults["bookmarks"] as? [AnyObject] {
-                        if let weakSelf = self {
-                            weakSelf.bookmarks = weakSelf.parseBookmarks(bookmarksJSON)
-                        }
+            if let jsonResults = results as? [String: AnyObject] {
+                if let bookmarksJSON = jsonResults["bookmarks"] as? [AnyObject] {
+                    if let weakSelf = self {
+                        weakSelf.bookmarks = weakSelf.parseBookmarks(bookmarksJSON)
                     }
                 }
             }
