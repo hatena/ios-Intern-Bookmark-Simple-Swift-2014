@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, APIClientProtocol {
     var window: UIWindow?
 
 
-    func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
         AFNetworkActivityIndicatorManager.sharedManager().enabled = true
         InternBookmarkAPIClient.sharedClient().delegate = self
@@ -47,9 +47,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, APIClientProtocol {
     // MARK: - IBKMInternBookmarkAPIClientDelegate
 
     func APIClientNeedsLogin(client : InternBookmarkAPIClient) {
-        let rootViewController: UIViewController = UIApplication.sharedApplication().keyWindow.rootViewController
-        let loginViewController: UIViewController = rootViewController.storyboard.instantiateViewControllerWithIdentifier("LoginScene") as UIViewController
-        rootViewController.presentViewController(loginViewController, animated: true, completion: nil)
+        let rootViewController = UIApplication.sharedApplication().keyWindow?.rootViewController
+        let loginViewController = rootViewController?.storyboard?.instantiateViewControllerWithIdentifier("LoginScene") as UIViewController
+        rootViewController?.presentViewController(loginViewController, animated: true, completion: nil)
     }
 
 }

@@ -14,7 +14,6 @@
 		0E054532198E5EFF009E3EBE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E054531198E5EFF009E3EBE /* User.swift */; };
 		0E054535198E6799009E3EBE /* NSDateFormatter+MySQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E054534198E6799009E3EBE /* NSDateFormatter+MySQL.swift */; };
 		0E054537198E6A95009E3EBE /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E054536198E6A95009E3EBE /* Entry.swift */; };
-		0E49BEF11997B7A000A70EF8 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E49BEF01997B7A000A70EF8 /* Alamofire.swift */; };
 		0EB4AEBC199119E300E63CFF /* UIAlertController+NSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB4AEBB199119E300E63CFF /* UIAlertController+NSError.swift */; };
 		0ED64DFF198DE3C4001D7680 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED64DFE198DE3C4001D7680 /* AppDelegate.swift */; };
 		0ED64E04198DE3C4001D7680 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ED64E02198DE3C4001D7680 /* Main.storyboard */; };
@@ -39,12 +38,10 @@
 		0E054524198DEA5C009E3EBE /* BookmarksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		0E054526198DF850009E3EBE /* BookmarkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkManager.swift; sourceTree = "<group>"; };
 		0E054528198DFE0C009E3EBE /* InternBookmarkAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternBookmarkAPIClient.swift; sourceTree = "<group>"; };
-		0E05452A198E0125009E3EBE /* InternBookmark-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "InternBookmark-Bridging-Header.h"; sourceTree = "<group>"; };
 		0E05452F198E5D50009E3EBE /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		0E054531198E5EFF009E3EBE /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0E054534198E6799009E3EBE /* NSDateFormatter+MySQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDateFormatter+MySQL.swift"; sourceTree = "<group>"; };
 		0E054536198E6A95009E3EBE /* Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
-		0E49BEF01997B7A000A70EF8 /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
 		0EB4AEBB199119E300E63CFF /* UIAlertController+NSError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+NSError.swift"; sourceTree = "<group>"; };
 		0ED64DF9198DE3C4001D7680 /* InternBookmark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InternBookmark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ED64DFD198DE3C4001D7680 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,6 +53,7 @@
 		0ED64E11198DE3C4001D7680 /* InternBookmarkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternBookmarkTests.swift; sourceTree = "<group>"; };
 		0EDA7E5B198FB7F40003E8C5 /* BookmarkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
 		0EDA7E5D198FBA570003E8C5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0EEBEFE21A89BD74001729FB /* InternBookmark-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "InternBookmark-Bridging-Header.h"; sourceTree = "<group>"; };
 		3E4EFC83500B46298394F0E8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF75C3A00E514AF99D611AE9 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,7 +80,7 @@
 		0E054521198DE997009E3EBE /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				0E49BEEF1997B75300A70EF8 /* Libraries */,
+				0EEBEFE21A89BD74001729FB /* InternBookmark-Bridging-Header.h */,
 				0E054533198E6746009E3EBE /* Utilities */,
 				0E054523198DEA1A009E3EBE /* Models */,
 				0E054522198DE9D9009E3EBE /* Controllers */,
@@ -107,7 +105,6 @@
 				0E05452E198E5D11009E3EBE /* Data Models */,
 				0E054526198DF850009E3EBE /* BookmarkManager.swift */,
 				0E054528198DFE0C009E3EBE /* InternBookmarkAPIClient.swift */,
-				0E05452A198E0125009E3EBE /* InternBookmark-Bridging-Header.h */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -130,14 +127,6 @@
 				0EB4AEBB199119E300E63CFF /* UIAlertController+NSError.swift */,
 			);
 			path = Utilities;
-			sourceTree = "<group>";
-		};
-		0E49BEEF1997B75300A70EF8 /* Libraries */ = {
-			isa = PBXGroup;
-			children = (
-				0E49BEF01997B7A000A70EF8 /* Alamofire.swift */,
-			);
-			path = Libraries;
 			sourceTree = "<group>";
 		};
 		0ED64DF0198DE3C4001D7680 = {
@@ -344,7 +333,6 @@
 				0E054527198DF850009E3EBE /* BookmarkManager.swift in Sources */,
 				0E054535198E6799009E3EBE /* NSDateFormatter+MySQL.swift in Sources */,
 				0E054532198E5EFF009E3EBE /* User.swift in Sources */,
-				0E49BEF11997B7A000A70EF8 /* Alamofire.swift in Sources */,
 				0E054525198DEA5C009E3EBE /* BookmarksViewController.swift in Sources */,
 				0ED64DFF198DE3C4001D7680 /* AppDelegate.swift in Sources */,
 				0EDA7E5C198FB7F40003E8C5 /* BookmarkViewController.swift in Sources */,
@@ -471,7 +459,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "InternBookmark/Classes/Models/InternBookmark-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "InternBookmark/Classes/InternBookmark-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -487,7 +475,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "InternBookmark/Classes/Models/InternBookmark-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "InternBookmark/Classes/InternBookmark-Bridging-Header.h";
 			};
 			name = Release;
 		};

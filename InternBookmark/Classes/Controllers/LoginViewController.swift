@@ -15,12 +15,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let request: NSURLRequest = NSURLRequest(URL: InternBookmarkAPIClient.loginURL())
-        self.webView.loadRequest(request)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        let request: NSURLRequest = NSURLRequest(URL: InternBookmarkAPIClient.loginURL()!)
+        webView.loadRequest(request)
     }
 
     func webViewDidStartLoad(webView: UIWebView!) {
@@ -33,10 +29,10 @@ class LoginViewController: UIViewController {
 
     func webView(webView: UIWebView!, didFailLoadWithError error: NSError!) {
         AFNetworkActivityIndicatorManager.sharedManager().decrementActivityCount()
-        if (error.code != NSURLErrorCancelled) {
-            let alertController : UIAlertController = UIAlertController(error: error)
+        if error.code != NSURLErrorCancelled {
+            let alertController = UIAlertController(error: error)
             alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alertController, animated: true, completion: nil)
+            presentViewController(alertController, animated: true, completion: nil)
         }
     }
 }

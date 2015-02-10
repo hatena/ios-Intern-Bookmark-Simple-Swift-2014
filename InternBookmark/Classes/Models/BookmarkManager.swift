@@ -10,7 +10,7 @@ import UIKit
 
 class BookmarkManager: NSObject {
 
-    var bookmarks: Array<Bookmark>!
+    var bookmarks: [Bookmark] = []
 
     class func sharedManager() -> BookmarkManager {
 
@@ -20,32 +20,28 @@ class BookmarkManager: NSObject {
         return Static.instance
     }
 
-    override init() {
-        self.bookmarks = []
+    func reloadBookmarksWithCompletion(completionHandler: ((NSError?) -> Void)?) {
+        InternBookmarkAPIClient.sharedClient().getBookmarksWithCompletion() { [weak self] (results: AnyObject?, error: NSError?) in
+            if let jsonResults = results as? [String: AnyObject] {
+                if let bookmarksJSON = jsonResults["bookmarks"] as? [AnyObject] {
+                    if let weakSelf = self {
+                        weakSelf.bookmarks = weakSelf.parseBookmarks(bookmarksJSON)
+                    }
+                }
+            }
+            completionHandler?(error)
+        }
     }
 
-    func reloadBookmarksWithBlock(block: ((NSError!) -> Void)!) {
-        InternBookmarkAPIClient.sharedClient().getBookmarksWithCompletion( { (results: AnyObject!, error: NSError!) in
-            if (results) {
-                let jsonResults: Dictionary<String, AnyObject>! = results as? Dictionary<String, AnyObject>
-                let bookmarksJSON: Array<AnyObject>! = (jsonResults["bookmarks"] as AnyObject?) as? Array<AnyObject>
-                self.bookmarks = self.parseBookmarks(bookmarksJSON)
-            }
-            if (block) {
-                block(error)
-            }
-        })
-    }
+    func parseBookmarks(bookmarksJSON: [AnyObject]) -> [Bookmark] {
+        var bookmarks: [Bookmark] = []
 
-    func parseBookmarks(bookmarks: Array<AnyObject>!) -> Array<Bookmark> {
-        var mutableBookmarks: Array<Bookmark> = []
-
-        for obj in bookmarks {
-            let bookmark: Bookmark = Bookmark(JSONDictionary: obj as? Dictionary<String, AnyObject>)
-            mutableBookmarks.append(bookmark)
+        for bookmarkJSON in bookmarksJSON {
+            if let bookmark = bookmarkJSON as? [String: AnyObject] {
+                bookmarks.append(Bookmark(JSONDictionary: bookmark))
+            }
         }
 
-        return mutableBookmarks
+        return bookmarks
     }
-
 }
