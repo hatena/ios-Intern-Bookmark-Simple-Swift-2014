@@ -26,12 +26,3 @@ $ pod install
 # アプリ起動
 
 Xcode で **Run**
-
-# ドキュメント生成
-
-`appledoc` でドキュメント生成します
-
-```
-$ brew install appledoc
-$ script/build-docs
-```
