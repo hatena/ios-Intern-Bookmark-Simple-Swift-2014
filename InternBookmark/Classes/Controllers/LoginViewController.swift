@@ -15,7 +15,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let request: NSURLRequest = NSURLRequest(URL: InternBookmarkAPIClient.loginURL())
+        let request: NSURLRequest = NSURLRequest(URL: InternBookmarkAPIClient.loginURL()!)
         self.webView.loadRequest(request)
     }
 

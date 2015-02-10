@@ -8,32 +8,28 @@
 
 import UIKit
 
-class User: NSObject {
-    var userID: NSNumber!
-    var name: String!
-    var created: NSDate!
+struct User {
+    let userID: NSNumber?
+    let name: String?
+    let created: NSDate?
 
-    convenience init(JSONDictionary json: Dictionary<String, AnyObject>!) {
-        let userID: NSNumber! = json["user_id"] as? NSNumber
-        let name: String! = json["name"] as? NSString
+    var description: String {
+        return "<userID=\(userID)"
+            + ", name=\(name)"
+            + ", created=\(created)>"
+    }
+
+    init(JSONDictionary json: [String: AnyObject]) {
+        if let userID = json["user_id"] as? NSNumber {
+            self.userID = userID
+        }
+        if let name = json["name"] as? NSString {
+            self.name = name
+        }
 
         let dateFormatter: NSDateFormatter = NSDateFormatter.MySQLDateFormatter()
-        let created: NSDate = dateFormatter.dateFromString(json["created"] as? NSString)
-
-        return self.init(userID: userID, name: name, created: created)
-    }
-
-    init(userID: NSNumber!, name: String!, created: NSDate!) {
-        self.userID = userID
-        self.name = name
-        self.created = created
-    }
-
-    func description() -> String {
-        var description: String = "<\(NSStringFromClass(self.dynamicType)): "
-            + "self.userID=\(self.userID)"
-            + ", self.name=\(self.name)"
-            + ", self.created=\(self.created)>"
-        return description
+        if let created = json["created"] as? NSString {
+            self.created = dateFormatter.dateFromString(created)
+        }
     }
 }

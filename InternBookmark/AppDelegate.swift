@@ -47,9 +47,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, APIClientProtocol {
     // MARK: - IBKMInternBookmarkAPIClientDelegate
 
     func APIClientNeedsLogin(client : InternBookmarkAPIClient) {
-        let rootViewController: UIViewController = UIApplication.sharedApplication().keyWindow.rootViewController
-        let loginViewController: UIViewController = rootViewController.storyboard.instantiateViewControllerWithIdentifier("LoginScene") as UIViewController
-        rootViewController.presentViewController(loginViewController, animated: true, completion: nil)
+        let rootViewController = UIApplication.sharedApplication().keyWindow?.rootViewController
+        let loginViewController = rootViewController?.storyboard?.instantiateViewControllerWithIdentifier("LoginScene") as UIViewController
+        rootViewController?.presentViewController(loginViewController, animated: true, completion: nil)
     }
 
 }

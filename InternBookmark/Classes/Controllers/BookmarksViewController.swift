@@ -14,20 +14,20 @@ class BookmarksViewController: UITableViewController {
         super.viewDidLoad()
 
         self.refreshControl = UIRefreshControl()
-        self.refreshControl.addTarget(self, action: "refreshBookmarks:", forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl?.addTarget(self, action: "refreshBookmarks:", forControlEvents: UIControlEvents.ValueChanged)
 
         self.refreshBookmarks(self)
     }
 
     func refreshBookmarks(sender: AnyObject) {
-        self.refreshControl.beginRefreshing()
+        self.refreshControl?.beginRefreshing()
 
         BookmarkManager.sharedManager().reloadBookmarksWithBlock( { (error: NSError!) in
-            if (error) {
+            if error != nil {
                 println("error = %@", error)
             }
             self.tableView.reloadData()
-            self.refreshControl.endRefreshing()
+            self.refreshControl?.endRefreshing()
         })
     }
 
@@ -37,30 +37,31 @@ class BookmarksViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int  {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return BookmarkManager.sharedManager().bookmarks.count
     }
 
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("BookmarkCell", forIndexPath: indexPath) as UITableViewCell
 
         let bookmark: Bookmark = BookmarkManager.sharedManager().bookmarks[indexPath.row]
 
-        cell.textLabel.text = bookmark.entry.title
-        cell.detailTextLabel.text = bookmark.entry.URL.absoluteString
+        cell.textLabel?.text = bookmark.entry?.title
+        cell.detailTextLabel?.text = bookmark.entry?.URL?.absoluteString
 
         return cell
     }
 
     // MARK: - Navigation
 
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "OpenBookmarkSegue") {
-            let selected: NSIndexPath = self.tableView.indexPathForSelectedRow()
-            let bookmark: Bookmark = BookmarkManager.sharedManager().bookmarks[selected.row]
+            if let selected = self.tableView?.indexPathForSelectedRow() {
+                let bookmark: Bookmark = BookmarkManager.sharedManager().bookmarks[selected.row]
 
-            let bookmarkViewController: BookmarkViewController = segue.destinationViewController as BookmarkViewController
-            bookmarkViewController.bookmark = bookmark
+                let bookmarkViewController: BookmarkViewController = segue.destinationViewController as BookmarkViewController
+                bookmarkViewController.bookmark = bookmark
+            }
         }
     }
 

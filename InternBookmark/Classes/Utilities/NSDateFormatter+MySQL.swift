@@ -8,7 +8,7 @@
 
 extension NSDateFormatter {
     class func MySQLDateFormatter() -> NSDateFormatter {
-        var formatter: NSDateFormatter = NSDateFormatter()
+        let formatter: NSDateFormatter = NSDateFormatter()
         formatter.timeZone = NSTimeZone(abbreviation: "GMT")
         formatter.locale = NSLocale(localeIdentifier:"en_US")
         formatter.calendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)

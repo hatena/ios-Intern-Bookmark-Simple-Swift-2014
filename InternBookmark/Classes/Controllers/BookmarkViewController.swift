@@ -19,9 +19,9 @@ class BookmarkViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = self.bookmark.entry.title
-        self.titleLabel.text = self.bookmark.entry.title
-        self.URLLabel.text = self.bookmark.entry.URL.absoluteString
+        self.title = self.bookmark.entry?.title
+        self.titleLabel.text = self.bookmark.entry?.title
+        self.URLLabel.text = self.bookmark.entry?.URL?.absoluteString
         self.commentLabel.text = self.bookmark.comment
     }
 

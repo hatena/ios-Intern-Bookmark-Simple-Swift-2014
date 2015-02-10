@@ -8,48 +8,45 @@
 
 import UIKit
 
-class Bookmark: NSObject {
+struct Bookmark {
 
-    var bookmarkID: NSNumber!
-    var comment: String!
-    var entry: Entry!
-    var user: User!
-    var created: NSDate!
-    var updated: NSDate!
+    let bookmarkID: NSNumber?
+    let comment: String?
+    let entry: Entry?
+    let user: User?
+    let created: NSDate?
+    let updated: NSDate?
 
-    convenience init(JSONDictionary json: Dictionary<String, AnyObject>!) {
-        let bookmarkID: NSNumber! = json["bookmark_id"] as? NSNumber
-        let comment: String! = json["comment"] as? NSString
-
-        let dateFormatter: NSDateFormatter = NSDateFormatter.MySQLDateFormatter()
-
-        let created: NSDate! = dateFormatter.dateFromString(json["created"] as? NSString)
-        let updated: NSDate! = dateFormatter.dateFromString(json["updated"] as? NSString)
-
-        let entry: Entry! = Entry(JSONDictionary: json["entry"]! as? Dictionary<String, AnyObject>)
-        let user: User! = User(JSONDictionary: json["user"]! as? Dictionary<String, AnyObject>)
-
-        return self.init(bookmarkID: bookmarkID, comment: comment, entry: entry, user: user, created: created, updated: updated)
+    var description: String {
+        return "<bookmarkID=\(bookmarkID)"
+            + ", comment=\(comment)"
+            + ", entry=\(entry)"
+            //+ ", user=\(user)"
+            + ", created=\(created)"
+            + ", updated=\(updated)>"
     }
 
-    init(bookmarkID: NSNumber!, comment: String!, entry: Entry!, user: User!, created: NSDate!, updated: NSDate!) {
-        self.bookmarkID = bookmarkID
-        self.comment = comment
-        self.entry = entry
-        self.user = user
-        self.created = created
-        self.updated = updated
-    }
+    init(JSONDictionary json: [String: AnyObject]) {
+        if let bookmarkID = json["bookmark_id"] as? NSNumber {
+            self.bookmarkID = bookmarkID
+        }
+        if let comment = json["comment"] as? NSString {
+            self.comment = comment
+        }
 
-    func description() -> String {
+        let dateFormatter = NSDateFormatter.MySQLDateFormatter()
 
-        var description : String = "<\(NSStringFromClass(self.dynamicType)): "
-            + "self.bookmarkID=\(self.bookmarkID)"
-            + ", self.comment=\(self.comment)"
-            + ", self.entry=\(self.entry)"
-            + ", self.user=\(self.user)"
-            + ", self.created=\(self.created)"
-            + ", self.updated=\(self.updated)>"
-        return description
+        if let created = json["created"] as? NSString {
+            self.created = dateFormatter.dateFromString(created)
+        }
+        if let updated = json["updated"] as? NSString {
+            self.updated = dateFormatter.dateFromString(updated)
+        }
+        if let entry = json["entry"] as? [String: AnyObject] {
+            self.entry = Entry(JSONDictionary: entry)
+        }
+        if let user = json["user"] as? [String: AnyObject] {
+            self.user = User(JSONDictionary: user)
+        }
     }
 }

@@ -8,42 +8,40 @@
 
 import UIKit
 
-class Entry: NSObject {
+struct Entry {
 
-    var entryID: NSNumber!
-    var URL: NSURL!
-    var title: String!
-    var created: NSDate!
-    var updated: NSDate!
+    let entryID: NSNumber?
+    let URL: NSURL?
+    let title: String?
+    let created: NSDate?
+    let updated: NSDate?
 
-    convenience init(JSONDictionary json: Dictionary<String, AnyObject>!) {
-        let entryID: NSNumber! = json["entry_id"] as? NSNumber
-        let URL: NSURL! = NSURL.URLWithString(json["url"] as? NSString)
-        let title: String! = json["title"] as? NSString
+    var description: String {
+        return "<entryID=\(entryID)"
+            + ", URL=\(URL)"
+            + ", title=\(title)"
+            + ", created=\(created)"
+            + ", updated=\(updated)>"
+    }
+
+    init(JSONDictionary json: [String: AnyObject]) {
+        if let entryID = json["entry_id"] as? NSNumber {
+            self.entryID = entryID
+        }
+        if let URL = json["url"] as? NSString {
+            self.URL = NSURL(string: URL)
+        }
+        if let title = json["title"] as? String {
+            self.title = title
+        }
 
         let dateFormatter: NSDateFormatter = NSDateFormatter.MySQLDateFormatter();
 
-        let created: NSDate! = dateFormatter.dateFromString(json["created"] as? NSString)
-        let updated: NSDate! = dateFormatter.dateFromString(json["updated"] as? NSString)
-
-        return self.init(entryID: entryID, URL: URL, title: title, created: created, updated: updated)
-    }
-
-    init(entryID: NSNumber!, URL: NSURL!, title: String!, created: NSDate!, updated: NSDate!) {
-        self.entryID = entryID
-        self.URL = URL
-        self.title = title
-        self.created = created
-        self.updated = updated
-    }
-
-    func description() -> String {
-        var description : String = "<\(NSStringFromClass(self.dynamicType)): "
-            + "self.entryID=\(self.entryID)"
-            + ", self.URL=\(self.URL)"
-            + ", self.title=\(self.title)"
-            + ", self.created=\(self.created)"
-            + ", self.updated=\(self.updated)>"
-        return description;
+        if let created = json["created"] as? NSString {
+            self.created = dateFormatter.dateFromString(created)
+        }
+        if let updated = json["updated"] as? NSString {
+            self.updated = dateFormatter.dateFromString(updated)
+        }
     }
 }

@@ -24,28 +24,26 @@ class BookmarkManager: NSObject {
         self.bookmarks = []
     }
 
-    func reloadBookmarksWithBlock(block: ((NSError!) -> Void)!) {
-        InternBookmarkAPIClient.sharedClient().getBookmarksWithCompletion( { (results: AnyObject!, error: NSError!) in
-            if (results) {
-                let jsonResults: Dictionary<String, AnyObject>! = results as? Dictionary<String, AnyObject>
-                let bookmarksJSON: Array<AnyObject>! = (jsonResults["bookmarks"] as AnyObject?) as? Array<AnyObject>
+    func reloadBookmarksWithBlock(block: ((NSError!) -> Void)?) {
+        InternBookmarkAPIClient.sharedClient().getBookmarksWithCompletion( { (results: AnyObject?, error: NSError?) in
+            if (results != nil) {
+                let jsonResults: [String: AnyObject]! = results as? [String: AnyObject]
+                let bookmarksJSON: [AnyObject]! = (jsonResults["bookmarks"] as AnyObject?) as? [AnyObject]
                 self.bookmarks = self.parseBookmarks(bookmarksJSON)
             }
-            if (block) {
-                block(error)
-            }
+            block?(error)
         })
     }
 
-    func parseBookmarks(bookmarks: Array<AnyObject>!) -> Array<Bookmark> {
-        var mutableBookmarks: Array<Bookmark> = []
+    func parseBookmarks(bookmarksJSON: [AnyObject]!) -> [Bookmark] {
+        var bookmarks: [Bookmark] = []
 
-        for obj in bookmarks {
-            let bookmark: Bookmark = Bookmark(JSONDictionary: obj as? Dictionary<String, AnyObject>)
-            mutableBookmarks.append(bookmark)
+        for obj in bookmarksJSON {
+            if let bookmark = obj as? [String: AnyObject] {
+                bookmarks.append(Bookmark(JSONDictionary: bookmark))
+            }
         }
 
-        return mutableBookmarks
+        return bookmarks
     }
-
 }

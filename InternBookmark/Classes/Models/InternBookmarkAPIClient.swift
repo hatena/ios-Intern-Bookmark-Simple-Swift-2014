@@ -18,6 +18,7 @@ struct APIClientConstants {
 
 class InternBookmarkAPIClient: NSObject {
 
+    let sessionManager: AFHTTPSessionManager
     var delegate: APIClientProtocol?
 
     class func sharedClient() -> InternBookmarkAPIClient {
@@ -27,32 +28,39 @@ class InternBookmarkAPIClient: NSObject {
         return Static.instance
     }
 
-    class func loginURL() -> NSURL {
-        return NSURL.URLWithString(APIClientConstants.APIBaseURLString).URLByAppendingPathComponent("login")
+    class func loginURL() -> NSURL? {
+        return NSURL(string: APIClientConstants.APIBaseURLString)?.URLByAppendingPathComponent("login")
+    }
+
+    override init() {
+        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        configuration.HTTPAdditionalHeaders = [
+            "Accept" : "application/json",
+        ]
+
+        sessionManager = AFHTTPSessionManager(baseURL: NSURL(string: APIClientConstants.APIBaseURLString),
+            sessionConfiguration: configuration)
     }
 
     func createURL(URL : String) -> String {
         return APIClientConstants.APIBaseURLString + URL
     }
 
-    func getBookmarksWithCompletion(block: ((AnyObject!,  NSError!) -> Void)!) {
+    func getBookmarksWithCompletion(block: ((AnyObject?,  NSError?) -> Void)?) {
 
-        Alamofire.request(.GET, self.createURL("/api/bookmarks"))
-            .responseJSON {(request, response, JSON, error) in
-                if (error != nil) {
-                    if (response?.statusCode == 401 && self.needsLogin()) {
-                        if (block) {
-                            block(nil, nil)
-                        }
-                    } else {
-                        if (block) {
-                            block(nil, error)
-                        }
-                    }
-                } else {
-                    if (block) {
-                        block(JSON, nil)
-                    }
+        sessionManager.GET("/api/bookmarks",
+            parameters: nil,
+            success: { (_, responseObject: AnyObject!) in
+                block?(responseObject, nil)
+                return
+            })
+            { (task: NSURLSessionDataTask!, error: NSError!) in
+                // 401 が返ったときログインが必要.
+                if ((task.response as? NSHTTPURLResponse)?.statusCode == 401 && self.needsLogin()) {
+                    block?(nil, nil);
+                }
+                else {
+                    block?(nil, error);
                 }
         }
     }
