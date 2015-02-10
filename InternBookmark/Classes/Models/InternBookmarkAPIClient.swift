@@ -42,10 +42,6 @@ class InternBookmarkAPIClient: NSObject {
             sessionConfiguration: configuration)
     }
 
-    func createURL(URL : String) -> String {
-        return APIClientConstants.APIBaseURLString + URL
-    }
-
     func getBookmarksWithCompletion(completionHandler: ((AnyObject?,  NSError?) -> Void)?) {
 
         sessionManager.GET("/api/bookmarks",
