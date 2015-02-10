@@ -9,13 +9,13 @@
 extension UIAlertController {
     convenience init(error : NSError) {
 
-        let message = "\n".join([error.localizedFailureReason!, error.localizedRecoverySuggestion!])
+        let message = "\n".join([error.localizedFailureReason ?? "", error.localizedRecoverySuggestion ?? ""])
         self.init(title: error.localizedDescription, message: message, preferredStyle: .Alert)
 
-        let optionTitles: Array<AnyObject>! = error.localizedRecoveryOptions
+        let optionTitles = error.localizedRecoveryOptions
 
-        if (optionTitles.count > 0) {
-            for title: AnyObject! in optionTitles {
+        if (optionTitles?.count > 0) {
+            for title: AnyObject! in optionTitles! {
                 let action = UIAlertAction(title: title as String, style: .Default, handler: nil)
                 self.addAction(action)
             }

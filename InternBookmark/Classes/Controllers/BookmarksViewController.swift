@@ -13,26 +13,22 @@ class BookmarksViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.refreshControl = UIRefreshControl()
-        self.refreshControl?.addTarget(self, action: "refreshBookmarks:", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: "refreshBookmarks:", forControlEvents: .ValueChanged)
 
-        self.refreshBookmarks(self)
+        refreshBookmarks(self)
     }
 
     func refreshBookmarks(sender: AnyObject) {
-        self.refreshControl?.beginRefreshing()
+        refreshControl?.beginRefreshing()
 
-        BookmarkManager.sharedManager().reloadBookmarksWithBlock( { (error: NSError!) in
+        BookmarkManager.sharedManager().reloadBookmarksWithCompletion() { [weak self] (error: NSError?) in
             if error != nil {
                 println("error = %@", error)
             }
-            self.tableView.reloadData()
-            self.refreshControl?.endRefreshing()
-        })
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+            self?.tableView.reloadData()
+            self?.refreshControl?.endRefreshing()
+        }
     }
 
     // MARK: - Table view data source
@@ -55,8 +51,8 @@ class BookmarksViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "OpenBookmarkSegue") {
-            if let selected = self.tableView?.indexPathForSelectedRow() {
+        if segue.identifier == "OpenBookmarkSegue" {
+            if let selected = tableView?.indexPathForSelectedRow() {
                 let bookmark: Bookmark = BookmarkManager.sharedManager().bookmarks[selected.row]
 
                 let bookmarkViewController: BookmarkViewController = segue.destinationViewController as BookmarkViewController
@@ -68,6 +64,6 @@ class BookmarksViewController: UITableViewController {
     // MARK: - IBAction
 
     @IBAction func closeLoginSegue(segue: UIStoryboardSegue) {
-        self.refreshBookmarks(self)
+        refreshBookmarks(self)
     }
 }

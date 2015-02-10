@@ -10,7 +10,7 @@ import UIKit
 
 class BookmarkManager: NSObject {
 
-    var bookmarks: Array<Bookmark>!
+    var bookmarks: [Bookmark] = []
 
     class func sharedManager() -> BookmarkManager {
 
@@ -20,26 +20,26 @@ class BookmarkManager: NSObject {
         return Static.instance
     }
 
-    override init() {
-        self.bookmarks = []
-    }
-
-    func reloadBookmarksWithBlock(block: ((NSError!) -> Void)?) {
-        InternBookmarkAPIClient.sharedClient().getBookmarksWithCompletion( { (results: AnyObject?, error: NSError?) in
-            if (results != nil) {
-                let jsonResults: [String: AnyObject]! = results as? [String: AnyObject]
-                let bookmarksJSON: [AnyObject]! = (jsonResults["bookmarks"] as AnyObject?) as? [AnyObject]
-                self.bookmarks = self.parseBookmarks(bookmarksJSON)
+    func reloadBookmarksWithCompletion(completionHandler: ((NSError?) -> Void)?) {
+        InternBookmarkAPIClient.sharedClient().getBookmarksWithCompletion() { [weak self] (results: AnyObject?, error: NSError?) in
+            if results != nil {
+                if let jsonResults = results as? [String: AnyObject] {
+                    if let bookmarksJSON = jsonResults["bookmarks"] as? [AnyObject] {
+                        if let weakSelf = self {
+                            weakSelf.bookmarks = weakSelf.parseBookmarks(bookmarksJSON)
+                        }
+                    }
+                }
             }
-            block?(error)
-        })
+            completionHandler?(error)
+        }
     }
 
-    func parseBookmarks(bookmarksJSON: [AnyObject]!) -> [Bookmark] {
+    func parseBookmarks(bookmarksJSON: [AnyObject]) -> [Bookmark] {
         var bookmarks: [Bookmark] = []
 
-        for obj in bookmarksJSON {
-            if let bookmark = obj as? [String: AnyObject] {
+        for bookmarkJSON in bookmarksJSON {
+            if let bookmark = bookmarkJSON as? [String: AnyObject] {
                 bookmarks.append(Bookmark(JSONDictionary: bookmark))
             }
         }

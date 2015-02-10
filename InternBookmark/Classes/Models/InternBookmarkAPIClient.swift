@@ -46,26 +46,26 @@ class InternBookmarkAPIClient: NSObject {
         return APIClientConstants.APIBaseURLString + URL
     }
 
-    func getBookmarksWithCompletion(block: ((AnyObject?,  NSError?) -> Void)?) {
+    func getBookmarksWithCompletion(completionHandler: ((AnyObject?,  NSError?) -> Void)?) {
 
         sessionManager.GET("/api/bookmarks",
             parameters: nil,
             success: { (_, responseObject: AnyObject!) in
-                block?(responseObject, nil)
+                completionHandler?(responseObject, nil)
                 return
             })
             { (task: NSURLSessionDataTask!, error: NSError!) in
                 // 401 が返ったときログインが必要.
                 if ((task.response as? NSHTTPURLResponse)?.statusCode == 401 && self.needsLogin()) {
-                    block?(nil, nil);
+                    completionHandler?(nil, nil);
                 }
                 else {
-                    block?(nil, error);
+                    completionHandler?(nil, error);
                 }
         }
     }
 
     func needsLogin() -> Bool {
-        return (self.delegate?.APIClientNeedsLogin(self) != nil)
+        return (delegate?.APIClientNeedsLogin(self) != nil)
     }
 }
