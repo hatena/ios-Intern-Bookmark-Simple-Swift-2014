@@ -22,9 +22,9 @@ class BookmarksViewController: UITableViewController {
     func refreshBookmarks(sender: AnyObject) {
         refreshControl?.beginRefreshing()
 
-        BookmarkManager.sharedManager().reloadBookmarksWithCompletion() { [weak self] (error: NSError?) in
+        BookmarkManager.sharedManager().reloadBookmarksWithCompletion() { [weak self] error in
             if error != nil {
-                println("error = %@", error)
+                println("error = \(error)")
             }
             self?.tableView.reloadData()
             self?.refreshControl?.endRefreshing()

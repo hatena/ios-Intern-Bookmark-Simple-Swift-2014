@@ -15,13 +15,13 @@ class BookmarkManager: NSObject {
     class func sharedManager() -> BookmarkManager {
 
         struct Static {
-                static let instance: BookmarkManager = BookmarkManager()
+                static let instance = BookmarkManager()
         }
         return Static.instance
     }
 
-    func reloadBookmarksWithCompletion(completionHandler: ((NSError?) -> Void)?) {
-        InternBookmarkAPIClient.sharedClient().getBookmarksWithCompletion() { [weak self] (results: AnyObject?, error: NSError?) in
+    func reloadBookmarksWithCompletion(completionHandler: (NSError? -> ())?) {
+        InternBookmarkAPIClient.sharedClient().getBookmarksWithCompletion() { [weak self] results, error in
             if let jsonResults = results as? [String: AnyObject] {
                 if let bookmarksJSON = jsonResults["bookmarks"] as? [AnyObject] {
                     if let weakSelf = self {
