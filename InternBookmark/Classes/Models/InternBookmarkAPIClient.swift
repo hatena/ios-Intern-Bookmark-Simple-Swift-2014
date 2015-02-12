@@ -23,7 +23,7 @@ class InternBookmarkAPIClient: NSObject {
 
     class func sharedClient() -> InternBookmarkAPIClient {
         struct Static {
-            static let instance: InternBookmarkAPIClient = InternBookmarkAPIClient()
+            static let instance = InternBookmarkAPIClient()
         }
         return Static.instance
     }
