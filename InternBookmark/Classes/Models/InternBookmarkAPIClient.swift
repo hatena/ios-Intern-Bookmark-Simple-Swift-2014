@@ -52,7 +52,7 @@ class InternBookmarkAPIClient: NSObject {
             })
             { (task, error) in
                 // 401 が返ったときログインが必要.
-                if ((task.response as? NSHTTPURLResponse)?.statusCode == 401 && self.needsLogin()) {
+                if (task.response as? NSHTTPURLResponse)?.statusCode == 401 && self.needsLogin() {
                     completionHandler?(nil, nil);
                 }
                 else {
